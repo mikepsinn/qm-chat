@@ -6,5 +6,44 @@
     "default": 10,
     "max": 50
   },
-  "nedb": "../data"
+  "nedb": "../data",
+  "authentication": {
+    "secret": "f4afe3b631fb469bc725e01b6d62a882080d5d1621839ad23f6087714584d0fb884479570d8652469cb03a7bae251e0f602791a3ddbf6a80ece5c55f2f30b4e35833fe9c1b72a81ac1d7a89cd06572ed8845df9ffe94fc9efa269bbc4524088036013c964f17f5bc6b63c74d8e31bbd39451947030cefc090a8cd4b6001c39e0c7e366b748cf0a22d3837bd64051f6226e14ef511fcb22d91322a2df06afe8a0b50397d812154f7b2af29884218232189a4c866dec73f1d27cd44c93702c595e8478fe4084a38096038fbdc5d2e3ed0ddf10985a5b8b3f53b7807d9650009630e1e37b7b5eabf47638acf7cfa34acf06d6641515f71c233fcb41572c62be5c00",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "auth0": {
+      "clientID": "your auth0 client id",
+      "clientSecret": "your auth0 client secret",
+      "successRedirect": "/",
+      "domain": "mydomain.auth0.com",
+      "scopes": [
+        "profile"
+      ]
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  }
 }
